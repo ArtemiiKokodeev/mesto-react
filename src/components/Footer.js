@@ -1,15 +1,6 @@
-import { useEffect, useState } from "react";
-
 function Footer() {
   
-  const [year, setYear] = useState(0);
-
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      const date = new Date();
-      setYear(date.getFullYear());
-    });
-  }, []);
+  const year = new Date().getFullYear();
   
   return (
     <footer className="footer">

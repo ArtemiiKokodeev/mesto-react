@@ -1,4 +1,3 @@
-import '../index.css';
 import Header from './Header';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';

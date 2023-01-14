@@ -6,20 +6,16 @@ import Card from './Card';
 
 function Main( { onEditProfile, onAddPlace, onEditAvatar, onCardClick } ) {
   
-  const [userName, setUserName] = useState();
-  const [userDescription, setUserDescription] = useState();
-  const [avatarLink, setAvatarLink] = useState();
+  const [userName, setUserName] = useState("");
+  const [userDescription, setUserDescription] = useState("");
+  const [avatarLink, setAvatarLink] = useState("");
   const [cards, setCards] = useState([]);
 
-  let userId
-  
   useEffect(() => {
     Promise.all([apiNew.getInitialCards(), apiNew.getProfileInfo()])
       .then(([initCards, initUserInfo]) => {
         //console.log(initCards)
         //console.log(initUserInfo)
-
-        userId = initUserInfo._id;
 
         setUserName(initUserInfo.name);
         setUserDescription(initUserInfo.about);
