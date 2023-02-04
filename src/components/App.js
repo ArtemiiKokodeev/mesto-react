@@ -5,11 +5,9 @@ import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import ImagePopup from './ImagePopup';
 import Footer from './Footer';
-import { useEffect, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { apiNew } from '../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import React from 'react';
-
 
 function App() {
 
@@ -32,7 +30,6 @@ function App() {
       console.log(`Ошибка при первичной загрузке профиля и карточек: ${error}`)
     })
 }, [])
-
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -101,7 +98,7 @@ function App() {
       console.log(`Ошибка при добавлении/удалении лайка карточки: ${error}`)
     })
   } 
-  
+
   function handleCardDelete(card) {
     // Отправляем запрос в API и 
     apiNew.deleteCard(card._id).then((res) => {
@@ -113,7 +110,6 @@ function App() {
       console.log(`Ошибка при удалении карточки: ${error}`)
     })
   } 
-
 
   return (
     <div className="page">

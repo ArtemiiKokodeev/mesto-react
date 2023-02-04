@@ -27,7 +27,6 @@ function Card( { card, onCardClick, onCardLike, onCardDelete } ) {
     onCardDelete(card);
   }
 
-
   return (
     <li className="element">
       <img className="element__image" src={card.link} alt={card.name} onClick={handleCardClick}/>
@@ -44,4 +43,3 @@ function Card( { card, onCardClick, onCardLike, onCardDelete } ) {
 }
 
 export default Card;
-

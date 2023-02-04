@@ -1,17 +1,14 @@
 import PopupWithForm from './PopupWithForm';
-import { useEffect, useState, useContext } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import React from 'react';
-
 
 function EditProfilePopup( { isOpen, onClose, onUpdateUser } ) {
 
   // Подписка на контекст
   const currentUser = useContext(CurrentUserContext);
-  
+
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
-
   const [submitButtonText, setSubmitButtonText] = useState("Сохранить");
 
   // После загрузки текущего пользователя из API

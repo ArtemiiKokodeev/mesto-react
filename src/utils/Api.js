@@ -7,7 +7,6 @@ export class Api {
     }
 
     // Проверка ответа от сервера
-
     _checkServerResponse(res) {
       if (res.ok) {
         return res.json();
@@ -17,7 +16,6 @@ export class Api {
     }
 
     // Получить список всех карточек в виде массива (GET)
-
     getInitialCards() {
       return fetch(`${this._url}cards`, {
         headers: this._headers
@@ -26,7 +24,6 @@ export class Api {
     }
 
     // Получить данные пользователя (GET)
-
     getProfileInfo() {
       return fetch(`${this._url}users/me`, {
         headers: this._headers
@@ -35,7 +32,6 @@ export class Api {
     }
 
     // Заменить данные пользователя (PATCH)
-
     editProfileInfo(userInfo) {
       return fetch(`${this._url}users/me`, {
         method: 'PATCH',
@@ -46,7 +42,6 @@ export class Api {
     }
 
     // Добавить карточку (POST)
-
     addNewCard(cardInfo) {
       return fetch(`${this._url}cards`, {
         method: 'POST',
@@ -57,7 +52,6 @@ export class Api {
     }
 
     // Удалить карточку (DELETE)
-
     deleteCard(id) {
       return fetch(`${this._url}cards/${id}`, {
         method: 'DELETE',
@@ -67,7 +61,6 @@ export class Api {
     }
 
     // Поставить или убрать лайк карточки (PUT/DELETE)
-    
     changeLikeCardStatus(id, isLiked) {
       if (isLiked) {
         return fetch(`${this._url}cards/${id}/likes`, {
@@ -85,7 +78,6 @@ export class Api {
     }
 
     // Заменить аватар (PATCH)
-
     editAvatar(avatarLink) {
       return fetch(`${this._url}users/me/avatar`, {
         method: 'PATCH',
@@ -94,7 +86,6 @@ export class Api {
       })
       .then(this._checkServerResponse)
     }
-
   }
 
 export const apiNew = new Api(apiConfig);

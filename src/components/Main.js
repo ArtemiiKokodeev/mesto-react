@@ -1,9 +1,7 @@
-import { useEffect, useState, useContext } from 'react';
+import { React, useContext } from 'react';
 import avatarIcon from '../images/edit-avatar.svg';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import React from 'react';
-
 
 function Main( { 
   onEditProfile, 
