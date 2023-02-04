@@ -36,28 +36,22 @@ export class Api {
 
     // Заменить данные пользователя (PATCH)
 
-    editProfileInfo({userName, userOccupation}) {
+    editProfileInfo(userInfo) {
       return fetch(`${this._url}users/me`, {
         method: 'PATCH',
         headers: this._headers,
-        body: JSON.stringify({
-          name: userName,
-          about: userOccupation
-        })
+        body: JSON.stringify(userInfo)
       })
       .then(this._checkServerResponse)
     }
 
     // Добавить карточку (POST)
 
-    addNewCard(name, link) {
+    addNewCard(cardInfo) {
       return fetch(`${this._url}cards`, {
         method: 'POST',
         headers: this._headers,
-        body: JSON.stringify({
-          name: name,
-          link: link
-        })
+        body: JSON.stringify(cardInfo)
       })
       .then(this._checkServerResponse)
     }
@@ -72,35 +66,31 @@ export class Api {
       .then(this._checkServerResponse)
     }
 
-    // “Залайкать” карточку (PUT)
-
-    addCardLike(id) {
-      return fetch(`${this._url}cards/${id}/likes`, {
-        method: 'PUT',
-        headers: this._headers
-      })
-      .then(this._checkServerResponse)
-    }
-
-    // Удалить лайк карточки (DELETE)
-
-    removeCardLike(id) {
-      return fetch(`${this._url}cards/${id}/likes`, {
-        method: 'DELETE',
-        headers: this._headers
-      })
-      .then(this._checkServerResponse)
+    // Поставить или убрать лайк карточки (PUT/DELETE)
+    
+    changeLikeCardStatus(id, isLiked) {
+      if (isLiked) {
+        return fetch(`${this._url}cards/${id}/likes`, {
+          method: 'PUT',
+          headers: this._headers
+        })
+        .then(this._checkServerResponse)
+      } else {
+          return fetch(`${this._url}cards/${id}/likes`, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+        .then(this._checkServerResponse)
+      }
     }
 
     // Заменить аватар (PATCH)
 
-    editAvatar({avatarLink}) {
+    editAvatar(avatarLink) {
       return fetch(`${this._url}users/me/avatar`, {
         method: 'PATCH',
         headers: this._headers,
-        body: JSON.stringify({
-          avatar: avatarLink
-        })
+        body: JSON.stringify(avatarLink)
       })
       .then(this._checkServerResponse)
     }
